@@ -3,7 +3,7 @@ import Calendar from "../Calendar";
 function Booking() {
   return (
     <>
-      <div>
+      <div className="pageContent">
         <h2>Boka tid!</h2>
       </div>
       <Calendar />

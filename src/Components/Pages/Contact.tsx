@@ -1,10 +1,16 @@
 function Contact() {
   return (
-    <div>
+    <div className="pageContent">
       <h2>Kontakta oss!</h2>
-      <p>Besöksadress: Vägvägen 23</p>
-      <p>Mejladress: coolmail@hotmail.com</p>
-      <p>Telefon: 123 456 67</p>
+      <p>
+        <span>Besöksadress:</span> Vägvägen 23
+      </p>
+      <p>
+        <span>Mejladress:</span> divinerelaxation@hotmail.com
+      </p>
+      <p>
+        <span>Telefon:</span> 123 456 67
+      </p>
     </div>
   );
 }

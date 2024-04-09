@@ -1,6 +1,7 @@
 function Start() {
   return (
-    <div>
+    <div className="pageContent">
+      <h2>Välkommen!</h2>
       <p>
         Välkommen till Divine Relaxation Spa, en oas av lugn och välbefinnande
         där varje besök är en resa till förnyelse och avkoppling. På Divine
