@@ -27,7 +27,7 @@ function App() {
 
   return (
     <>
-      <h1 style={{ textAlign: "center" }}>Spa</h1>
+      <h1 style={{ textAlign: "center" }}>Divine Relaxation Spa</h1>
       <NavBar setPage={setPage} />
 
       {{

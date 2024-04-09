@@ -1,9 +1,6 @@
-import React from "react";
-
 function Start() {
   return (
     <div>
-      <h1 style={{ textAlign: "center" }}>Divine Relaxation Spa</h1>
       <p>
         Välkommen till Divine Relaxation Spa, en oas av lugn och välbefinnande
         där varje besök är en resa till förnyelse och avkoppling. På Divine
