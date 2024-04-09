@@ -38,8 +38,8 @@ function BookingForm({ selectedDate }: BookingFormProps) {
 
   return (
     <div>
-      <p className="pageText">Valt datum: {selectedDate.toDateString()}</p>
       <form className="bookingForm" onSubmit={handleSubmit}>
+        <p className="bookingText">Valt datum: {selectedDate.toDateString()}</p>
         <input
           type="text"
           placeholder="Skriv ditt namn"
