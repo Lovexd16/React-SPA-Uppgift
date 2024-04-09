@@ -2,7 +2,7 @@ function FoodDrinks() {
   return (
     <div className="pageContent">
       <h2>Mat & Dryck</h2>
-      <p>
+      <p className="pageText">
         Vi i Divine Relaxation Spa strävar inte bara efter att tillgodose dina
         behov för avkoppling och välbefinnande, utan även för att ge dig en
         smakupplevelse som kompletterar din spa-upplevelse på bästa sätt. Vi

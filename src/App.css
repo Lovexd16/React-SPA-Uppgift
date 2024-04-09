@@ -8,13 +8,6 @@ div {
   text-align: center;
 }
 
-p {
-  font-size: larger;
-  background-color: rgba(214, 255, 255, 0.6);
-  padding: 0.5%;
-  width: 75%;
-  margin: auto;
-}
 
 h1 {
   text-align: center;
@@ -40,7 +33,7 @@ span {
   text-align: center;
 }
 
-.navbar button {
+button {
   margin: 0 20px;
   padding: 10px 20px;
   border: none;
@@ -51,4 +44,22 @@ span {
 
 .navbar button:hover {
   background-color: lightgray;
+}
+
+.bookingForm {
+  background-color: rgba(214, 255, 255, 0.6);
+}
+
+.pageText {
+  font-size: larger;
+  background-color: rgba(214, 255, 255, 0.6);
+  padding: 0.5%;
+  width: 75%;
+  margin: auto;
+}
+
+.bookingText {
+  font-size: large;
+  font-weight: bold;
+  text-decoration: underline;
 }
