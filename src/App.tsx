@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import Start from "./Components/Pages/Start";
 import Booking from "./Components/Pages/Booking";
-import About from "./Components/Pages/About";
+import FoodDrinks from "./Components/Pages/FoodDrinks";
 import Contact from "./Components/Pages/Contact";
 import NavBar from "./Components/NavBar";
 
@@ -27,13 +27,13 @@ function App() {
 
   return (
     <>
-      <h1>Spa</h1>
+      <h1 style={{ textAlign: "center" }}>Spa</h1>
       <NavBar setPage={setPage} />
 
       {{
         start: <Start />,
         booking: <Booking />,
-        about: <About />,
+        fooddrinks: <FoodDrinks />,
         contact: <Contact />,
       }[page] || <Start />}
     </>
