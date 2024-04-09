@@ -4,7 +4,7 @@ interface Props {
 
 function NavBar(props: Props) {
   return (
-    <div style={{ textAlign: "center" }}>
+    <div className="navbar">
       <button onClick={() => props.setPage("start")}>Start</button>
       <button onClick={() => props.setPage("booking")}>Boka Tid</button>
       <button onClick={() => props.setPage("fooddrinks")}>Mat & Dryck</button>
