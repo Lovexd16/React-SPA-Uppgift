@@ -63,3 +63,21 @@ button {
   font-weight: bold;
   text-decoration: underline;
 }
+
+.confirmationPopup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 1px solid black;
+  padding: 20px;
+}
+
+.popupContent {
+  text-align: center;
+}
+
+.confirmationPopup button {
+  margin-top: 10px;
+}

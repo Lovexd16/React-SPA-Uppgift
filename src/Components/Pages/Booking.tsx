@@ -16,16 +16,18 @@ function Booking() {
   };
 
   return (
-    <>
-      <div className="pageContent"></div>
-
-      <h2>Boka tid!</h2>
-      <Calendar onDateSelection={handleDateSelection} />
+    <div>
+      <div>
+        <h2>Boka tid!</h2>
+      </div>
 
       {selectedDate && showForm && (
-        <BookingForm selectedDate={selectedDate} onClose={handleCloseForm} />
+        <div>
+          <BookingForm selectedDate={selectedDate} onClose={handleCloseForm} />
+        </div>
       )}
-    </>
+      <Calendar onDateSelection={handleDateSelection} />
+    </div>
   );
 }
 
