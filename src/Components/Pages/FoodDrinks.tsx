@@ -1,6 +1,6 @@
 function FoodDrinks() {
   return (
-    <div>
+    <div className="pageContent">
       <h2>Mat & Dryck</h2>
       <p>
         Vi i Divine Relaxation Spa strävar inte bara efter att tillgodose dina
