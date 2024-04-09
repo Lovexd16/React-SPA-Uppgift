@@ -69,10 +69,9 @@ button {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #ffffff;
-  border: 1px solid #ccc;
+  background-color: white;
+  border: 1px solid black;
   padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .popupContent {
