@@ -1,11 +1,10 @@
-import React from "react";
 import Calendar from "../Calendar";
 
 function Booking() {
   return (
     <>
       <div>
-        <h1 style={{ textAlign: "center" }}>Boka tid!</h1>
+        <h2>Boka tid!</h2>
       </div>
       <Calendar />
     </>

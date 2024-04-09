@@ -1,9 +1,7 @@
-import React from "react";
-
 function FoodDrinks() {
   return (
     <div>
-      <h1 style={{ textAlign: "center" }}>Mat & Dryck</h1>
+      <h2>Mat & Dryck</h2>
       <p>
         Vi i Divine Relaxation Spa strävar inte bara efter att tillgodose dina
         behov för avkoppling och välbefinnande, utan även för att ge dig en
