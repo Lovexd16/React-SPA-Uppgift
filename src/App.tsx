@@ -23,6 +23,8 @@ function App() {
         pageUrl = "start";
       }
     }
+
+    window.history.pushState(null, "", "?page=" + pageUrl);
   }, [page]);
 
   return (
