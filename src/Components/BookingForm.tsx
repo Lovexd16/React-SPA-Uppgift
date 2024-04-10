@@ -27,6 +27,10 @@ function BookingForm({ selectedDate, onClose }: BookingFormProps) {
   };
 
   const handleNextStep = () => {
+    if (name.trim() === "") {
+      alert("Du måste ange ett namn");
+      return;
+    }
     setStep((prevStep) => prevStep + 1);
   };
 
