@@ -1,5 +1,32 @@
 {
   "bookings": [
-    
+    {
+      "id": "63a9",
+      "date": "2024-04-10T22:00:00.000Z",
+      "time": "Eftermiddag",
+      "temperature": "Kallt",
+      "name": "test"
+    },
+    {
+      "id": "ae94",
+      "date": "2024-04-10T22:00:00.000Z",
+      "time": "Eftermiddag",
+      "temperature": "Varmt",
+      "name": "Love"
+    },
+    {
+      "id": "3760",
+      "date": "2024-04-10T22:00:00.000Z",
+      "time": "Förmiddag",
+      "temperature": "Kallt",
+      "name": "Love"
+    },
+    {
+      "id": "420c",
+      "date": "2024-04-11T22:00:00.000Z",
+      "time": "Förmiddag",
+      "temperature": "Kallt",
+      "name": "a"
+    }
   ]
 }

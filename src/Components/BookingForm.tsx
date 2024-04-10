@@ -11,6 +11,10 @@ function BookingForm({ selectedDate, onClose }: BookingFormProps) {
   const [time, setTime] = useState("");
   const [temperature, setTemperature] = useState("");
   const [showConfirmation, setShowConfirmation] = useState(false);
+  const [availableTemperatures, setAvailableTemperatures] = useState([
+    "Varmt",
+    "Kallt",
+  ]);
 
   const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value);
@@ -46,6 +50,22 @@ function BookingForm({ selectedDate, onClose }: BookingFormProps) {
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
+    const existingBookingsRes = await fetch(
+      `http://localhost:3000/bookings?date=${selectedDate.toISOString()}`
+    );
+    const existingBookings = await existingBookingsRes.json();
+
+    const isBookingExist = existingBookings.some(
+      (booking) => booking.time === time && booking.temperature === temperature
+    );
+
+    if (isBookingExist) {
+      alert(
+        "Den valda tiden och temperaturen är redan bokad. Välj en annan tid eller temperatur."
+      );
+      return;
+    }
+
     const bookingData = {
       date: selectedDate,
       time: time,
@@ -66,6 +86,9 @@ function BookingForm({ selectedDate, onClose }: BookingFormProps) {
     }
 
     console.log("Bokning lyckades");
+    setAvailableTemperatures((prevTemperatures) =>
+      prevTemperatures.filter((temp) => temp !== temperature)
+    );
     setShowConfirmation(true);
   };
 
