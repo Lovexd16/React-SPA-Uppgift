@@ -62,7 +62,7 @@ function BookingForm({ selectedDate, onClose }: BookingFormProps) {
     });
 
     if (!res.ok) {
-      throw new Error("Bokning misslyckades");
+      console.log("Bokning misslyckades");
     }
 
     console.log("Bokning lyckades");
