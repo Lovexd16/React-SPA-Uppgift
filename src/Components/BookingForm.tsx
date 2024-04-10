@@ -6,10 +6,15 @@ interface BookingFormProps {
 }
 
 function BookingForm({ selectedDate }: BookingFormProps) {
+  const [step, setStep] = useState(0);
+  const [name, setName] = useState("");
   const [time, setTime] = useState("");
   const [temperature, setTemperature] = useState("");
-  const [name, setName] = useState("");
   const [showConfirmation, setShowConfirmation] = useState(false);
+
+  const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setName(event.target.value);
+  };
 
   const handleTimeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTime(event.target.value);
@@ -21,8 +26,12 @@ function BookingForm({ selectedDate }: BookingFormProps) {
     setTemperature(event.target.value);
   };
 
-  const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setName(event.target.value);
+  const handleNextStep = () => {
+    setStep((prevStep) => prevStep + 1);
+  };
+
+  const handlePreviousStep = () => {
+    setStep((prevStep) => prevStep - 1);
   };
 
   const handleSubmit = async (event: React.FormEvent) => {
@@ -54,75 +63,103 @@ function BookingForm({ selectedDate }: BookingFormProps) {
   return (
     <div>
       <form className="bookingForm" onSubmit={handleSubmit}>
-        <p className="bookingText">Valt datum: {selectedDate.toDateString()}</p>
-        <input
-          type="text"
-          placeholder="Skriv ditt namn"
-          name="name"
-          value={name}
-          onChange={handleNameChange}
-          required
-        ></input>
-        <div>
-          <p className="bookingText">Vilken tid vill du komma?</p>
-          <input
-            type="radio"
-            id="morning"
-            name="time"
-            value="Förmiddag"
-            checked={time === "Förmiddag"}
-            onChange={handleTimeChange}
-            required
-          ></input>
-          <label>Förmiddag</label>
+        {step === 0 && (
+          <>
+            <p className="bookingText">
+              Valt datum: {selectedDate.toDateString()}
+            </p>
+            <input
+              type="text"
+              placeholder="Skriv ditt namn"
+              name="name"
+              value={name}
+              onChange={handleNameChange}
+              required
+            />
+            <button type="button" onClick={handleNextStep}>
+              Nästa
+            </button>
+          </>
+        )}
 
-          <input
-            type="radio"
-            id="afternoon"
-            name="time"
-            value="Eftermiddag"
-            checked={time === "Eftermiddag"}
-            onChange={handleTimeChange}
-          ></input>
-          <label>Eftermiddag</label>
+        {step === 1 && (
+          <>
+            <div>
+              <p className="bookingText">Vilken tid vill du komma?</p>
+              <button type="button" onClick={handlePreviousStep}>
+                Tillbaka
+              </button>
+              <input
+                type="radio"
+                id="morning"
+                name="time"
+                value="Förmiddag"
+                checked={time === "Förmiddag"}
+                onChange={handleTimeChange}
+                required
+              ></input>
+              <label className="bookingText">Förmiddag</label>
 
-          <input
-            type="radio"
-            id="evening"
-            name="time"
-            value="Kväll"
-            checked={time === "Kväll"}
-            onChange={handleTimeChange}
-            required
-          ></input>
-          <label>Kväll</label>
-        </div>
+              <input
+                type="radio"
+                id="afternoon"
+                name="time"
+                value="Eftermiddag"
+                checked={time === "Eftermiddag"}
+                onChange={handleTimeChange}
+              ></input>
+              <label className="bookingText">Eftermiddag</label>
 
-        <div>
-          <p className="bookingText">Vilken temperatur vill du ha?</p>
-          <input
-            type="radio"
-            id="hot"
-            name="temperature"
-            value="Varmt"
-            checked={temperature === "Varmt"}
-            onChange={handleTemperatureChange}
-            required
-          ></input>
-          <label>Varmt</label>
+              <input
+                type="radio"
+                id="evening"
+                name="time"
+                value="Kväll"
+                checked={time === "Kväll"}
+                onChange={handleTimeChange}
+                required
+              ></input>
+              <label className="bookingText">Kväll</label>
 
-          <input
-            type="radio"
-            id="cold"
-            name="temperature"
-            value="Kallt"
-            checked={temperature === "Kallt"}
-            onChange={handleTemperatureChange}
-            required
-          ></input>
-          <label>Kallt</label>
-        </div>
-        <button type="submit">Boka</button>
+              <button type="button" onClick={handleNextStep}>
+                Nästa
+              </button>
+            </div>
+          </>
+        )}
+
+        {step === 2 && (
+          <>
+            <div>
+              <p className="bookingText">Vilken temperatur vill du ha?</p>
+              <button type="button" onClick={handlePreviousStep}>
+                Tillbaka
+              </button>
+              <input
+                type="radio"
+                id="hot"
+                name="temperature"
+                value="Varmt"
+                checked={temperature === "Varmt"}
+                onChange={handleTemperatureChange}
+                required
+              ></input>
+              <label className="bookingText">Varmt</label>
+
+              <input
+                type="radio"
+                id="cold"
+                name="temperature"
+                value="Kallt"
+                checked={temperature === "Kallt"}
+                onChange={handleTemperatureChange}
+                required
+              ></input>
+              <label className="bookingText">Kallt</label>
+              <button type="submit">Boka</button>
+            </div>
+          </>
+        )}
       </form>
 
       {showConfirmation && (
