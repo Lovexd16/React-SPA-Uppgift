@@ -25,14 +25,29 @@ function BookingForm({ selectedDate }: BookingFormProps) {
     setName(event.target.value);
   };
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    console.log("Bokning:", {
+
+    const bookingData = {
       date: selectedDate,
       time: time,
       temperature: temperature,
       name: name,
+    };
+
+    const res = await fetch("http://localhost:3000/bookings", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(bookingData),
     });
+
+    if (!res.ok) {
+      throw new Error("Bokning misslyckades");
+    }
+
+    console.log("Bokning lyckades");
     setShowConfirmation(true);
   };
 
