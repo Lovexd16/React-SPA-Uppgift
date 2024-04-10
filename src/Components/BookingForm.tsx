@@ -5,7 +5,7 @@ interface BookingFormProps {
   onClose: () => void;
 }
 
-function BookingForm({ selectedDate }: BookingFormProps) {
+function BookingForm({ selectedDate, onClose }: BookingFormProps) {
   const [step, setStep] = useState(0);
   const [name, setName] = useState("");
   const [time, setTime] = useState("");
@@ -32,6 +32,11 @@ function BookingForm({ selectedDate }: BookingFormProps) {
 
   const handlePreviousStep = () => {
     setStep((prevStep) => prevStep - 1);
+  };
+
+  const handleConfirmationClosing = () => {
+    setShowConfirmation(false);
+    onClose();
   };
 
   const handleSubmit = async (event: React.FormEvent) => {
@@ -170,7 +175,7 @@ function BookingForm({ selectedDate }: BookingFormProps) {
             <p>Datum: {selectedDate.toDateString()}</p>
             <p>Tid: {time}</p>
             <p>Temperatur: {temperature}</p>
-            <button onClick={() => setShowConfirmation(false)}>Stäng</button>
+            <button onClick={handleConfirmationClosing}>Stäng</button>
           </div>
         </div>
       )}
