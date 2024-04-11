@@ -10,7 +10,7 @@ function Calendar({ onDateSelection }: CalendarProps) {
     return date.getDay() === 1;
   };
 
-  const tileDisabled = ({
+  const closeMondays = ({
     date,
     view,
   }: {
@@ -30,7 +30,7 @@ function Calendar({ onDateSelection }: CalendarProps) {
         className="CALENDAR"
         view="month"
         onClickDay={onDateSelection}
-        tileDisabled={tileDisabled}
+        tileDisabled={closeMondays}
       />
     </div>
   );
