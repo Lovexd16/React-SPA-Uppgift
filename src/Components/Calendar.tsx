@@ -6,6 +6,23 @@ interface CalendarProps {
 }
 
 function Calendar({ onDateSelection }: CalendarProps) {
+  const monday = (date: Date): boolean => {
+    return date.getDay() === 1;
+  };
+
+  const tileDisabled = ({
+    date,
+    view,
+  }: {
+    date: Date;
+    view: string;
+  }): boolean => {
+    if (view === "month") {
+      return monday(date);
+    }
+    return false;
+  };
+
   return (
     <div>
       <ReactCalendar
@@ -13,6 +30,7 @@ function Calendar({ onDateSelection }: CalendarProps) {
         className="CALENDAR"
         view="month"
         onClickDay={onDateSelection}
+        tileDisabled={tileDisabled}
       />
     </div>
   );
