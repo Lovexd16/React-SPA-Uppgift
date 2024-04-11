@@ -19,6 +19,7 @@ function Booking() {
     <div>
       <div>
         <h2>Boka tid!</h2>
+        <p className="pageText">Vi har öppet alla dagar förutom måndagar!</p>
       </div>
 
       {selectedDate && showForm && (
