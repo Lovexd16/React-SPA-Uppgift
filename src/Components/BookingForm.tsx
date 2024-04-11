@@ -5,6 +5,11 @@ interface BookingFormProps {
   onClose: () => void;
 }
 
+interface Booking {
+  time: string;
+  temperature: string;
+}
+
 function BookingForm({ selectedDate, onClose }: BookingFormProps) {
   const [step, setStep] = useState(0);
   const [name, setName] = useState("");
@@ -53,15 +58,15 @@ function BookingForm({ selectedDate, onClose }: BookingFormProps) {
     const existingBookingsRes = await fetch(
       `http://localhost:3000/bookings?date=${selectedDate.toISOString()}`
     );
-    const existingBookings = await existingBookingsRes.json();
+    const existingBookings: Booking[] = await existingBookingsRes.json();
 
-    const isBookingExist = existingBookings.some(
+    const isBookingExisting = existingBookings.some(
       (booking) => booking.time === time && booking.temperature === temperature
     );
 
-    if (isBookingExist) {
+    if (isBookingExisting) {
       alert(
-        "Den valda tiden och temperaturen är redan bokad. Välj en annan tid eller temperatur."
+        "Den valda tiden och temperaturen är upptagen. Vänligen välj annan tid eller temperatur."
       );
       return;
     }
@@ -177,7 +182,6 @@ function BookingForm({ selectedDate, onClose }: BookingFormProps) {
                 required
               ></input>
               <label className="bookingText">Varmt</label>
-
               <input
                 type="radio"
                 id="cold"
