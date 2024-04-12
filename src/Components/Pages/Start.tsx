@@ -1,5 +1,6 @@
 function Start() {
   return (
+    //Ger div och p ett className för att kunna ändra utseende i css
     <div className="pageContent">
       <h2>Välkommen!</h2>
       <p className="pageText">
