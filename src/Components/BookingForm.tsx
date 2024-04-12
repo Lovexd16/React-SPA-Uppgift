@@ -93,7 +93,7 @@ function BookingForm({ selectedDate, onClose }: BookingFormProps) {
     };
 
     //Skickar datan till db.json och sparar den där
-    const res = await fetch("http://localhost:3000/bookings", {
+    await fetch("http://localhost:3000/bookings", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -101,18 +101,11 @@ function BookingForm({ selectedDate, onClose }: BookingFormProps) {
       body: JSON.stringify(bookingData),
     });
 
-    //Om det för någon anledning skulle misslyckas så loggas det ut
-    if (!res.ok) {
-      console.log("Bokning misslyckades");
-    }
-
-    //Om allt går som det ska loggas det ut att bokningen lyckats
-    console.log("Bokning lyckades");
     //Bekräftelse-fönstret visas
     setShowConfirmation(true);
   };
 
-  //Hela bokningsformuläret. Step sätts börjar på 0 och räknar uppåt vid varje "nästa"-klick, nedåt vid "tillbaka"-klick. Varje step innehåller ett val
+  //Hela bokningsformuläret. Step börjar på 0 och räknar uppåt vid varje "nästa"-klick, nedåt vid "tillbaka"-klick. Varje step innehåller ett val
   return (
     <div>
       <form className="bookingForm" onSubmit={handleSubmit}>
