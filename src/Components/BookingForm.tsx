@@ -5,10 +5,10 @@ interface BookingFormProps {
   onClose: () => void;
 }
 
-interface Booking {
-  time: string;
-  temperature: string;
-}
+// interface Booking {
+//   time: string;
+//   temperature: string;
+// }
 
 function BookingForm({ selectedDate, onClose }: BookingFormProps) {
   //State för att hålla koll på steg i bokningsprocessen, då jag valde att göra den steg för steg
@@ -65,24 +65,24 @@ function BookingForm({ selectedDate, onClose }: BookingFormProps) {
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
-    //Hämtar eventuella bokningar som redan har skett för ett valt datum
-    const existingBookingsRes = await fetch(
-      `http://localhost:3000/bookings?date=${selectedDate.toISOString()}`
-    );
-    const existingBookings: Booking[] = await existingBookingsRes.json();
+    // //Hämtar eventuella bokningar som redan har skett för ett valt datum
+    // const existingBookingsRes = await fetch(
+    //   `http://localhost:3000/bookings?date=${selectedDate.toISOString()}`
+    // );
+    // const existingBookings: Booking[] = await existingBookingsRes.json();
 
-    //Kontrollerar om en tid & temperatur redan är bokade
-    const isBookingExisting = existingBookings.some(
-      (booking) => booking.time === time && booking.temperature === temperature
-    );
+    // //Kontrollerar om en tid & temperatur redan är bokade
+    // const isBookingExisting = existingBookings.some(
+    //   (booking) => booking.time === time && booking.temperature === temperature
+    // );
 
-    //Om en bokning för den tiden & temperaturen redan finns sparad i db.json får man en alert om att det är upptagen då
-    if (isBookingExisting) {
-      alert(
-        "Den valda tiden och temperaturen är upptagen. Vänligen välj annan tid eller temperatur."
-      );
-      return;
-    }
+    // //Om en bokning för den tiden & temperaturen redan finns sparad i db.json får man en alert om att det är upptagen då
+    // if (isBookingExisting) {
+    //   alert(
+    //     "Den valda tiden och temperaturen är upptagen. Vänligen välj annan tid eller temperatur."
+    //   );
+    //   return;
+    // }
 
     //Skapar datan som skickas till servern när en bokning är gjord
     const bookingData = {
@@ -92,18 +92,29 @@ function BookingForm({ selectedDate, onClose }: BookingFormProps) {
       name: name,
     };
 
-    //Skickar datan till db.json och sparar den där
-    await fetch("http://localhost:3000/bookings", {
+    await fetch("http://localhost:8080/booking", {
       method: "POST",
       headers: {
-        "content-type": "application/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(bookingData),
     });
 
-    //Bekräftelse-fönstret visas
     setShowConfirmation(true);
   };
+
+  //   //Skickar datan till db.json och sparar den där
+  //   await fetch("http://localhost:3000/bookings", {
+  //     method: "POST",
+  //     headers: {
+  //       "content-type": "application/json",
+  //     },
+  //     body: JSON.stringify(bookingData),
+  //   });
+
+  //   //Bekräftelse-fönstret visas
+  //   setShowConfirmation(true);
+  // };
 
   //Hela bokningsformuläret. Step börjar på 0 och räknar uppåt vid varje "nästa"-klick, nedåt vid "tillbaka"-klick. Varje step innehåller ett val
   return (
